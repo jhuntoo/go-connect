@@ -1,12 +1,20 @@
 language: go
 go:
   - tip
+
 before_install:
+  - go get golang.org/x/tools/cmd/cover
   - go get github.com/axw/gocov/gocov
+  - go get github.com/modocache/gover
   - go get github.com/mattn/goveralls
-  - if ! go get code.google.com/p/go.tools/cmd/cover; then go get golang.org/x/tools/cmd/cover; fi
+
 script:
-    - $HOME/gopath/bin/goveralls -service=travis-ci -repotoken $COVERALLS_TOKEN
+  - go test -coverprofile=oauth2registration.coverprofile ./oauth2/registration
+#  - go test -coverprofile=utils.coverprofile ./utils
+#  - go test -coverprofile=models.coverprofile ./models
+#  - go test -coverprofile=main.coverprofile
+  - $HOME/gopath/bin/gover
+  - $HOME/gopath/bin/goveralls -coverprofile=gover.coverprofile -service travis-ci
     
     
     
