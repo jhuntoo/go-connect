@@ -1,0 +1,4 @@
+auth2:
+  registration:
+    UnknownClientMetaDataBehaviour: "reject" # "use_defaults"
+

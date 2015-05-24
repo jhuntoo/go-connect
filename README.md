@@ -8,7 +8,7 @@ An Oauth2/ OpenId Connect Server
 1. [Core Spec (RFC6749)]( https://tools.ietf.org/html/rfc6749)
 2. [Dynamic Client Registration Spec (Draft)](https://tools.ietf.org/html/draft-ietf-oauth-dyn-reg-29) 
 
-c
+
 ### OpenId Connect
 1. [Core](http://openid.net/specs/openid-connect-registration-1_0.html)
 2. [Discovery](http://openid.net/specs/openid-connect-discovery-1_0.html)
