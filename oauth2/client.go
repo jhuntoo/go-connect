@@ -40,3 +40,5 @@ type Client struct {
 	AccessTokenValidityInSeconds  int
 	RefreshTokenValidityInSeconds int
 }
+
+

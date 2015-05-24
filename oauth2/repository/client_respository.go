@@ -1,4 +1,4 @@
-package go-connect
+package x
 
 
 type ClientRespository struct {

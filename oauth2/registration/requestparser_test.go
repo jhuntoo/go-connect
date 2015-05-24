@@ -42,55 +42,53 @@ var _ = Describe("Requestparser", func() {
 			  
 		     }`
 						
-			client, err := parser.Parse([]byte(reqestBody))
+			request, err := parser.Parse([]byte(reqestBody))
 			
 			It("should not error", func() {
 				Expect(err).To(BeNil())
 			})
 			It("should parse RedirectUris", func() {
-				Expect(client.RedirectUris).To(HaveLen(2))
-				Expect(client.RedirectUris[0]).To(Equal("https://client.example.org/callback"))
-				Expect(client.RedirectUris[1]).To(Equal("https://client.example.org/callback2"))
+				Expect(request.RedirectUris).To(HaveLen(2))
+				Expect(request.RedirectUris[0]).To(Equal("https://client.example.org/callback"))
+				Expect(request.RedirectUris[1]).To(Equal("https://client.example.org/callback2"))
 			})
 			It("should parse client_name", func() {
-				Expect(client.Name).To(Equal("My Example Client"))
+				Expect(request.ClientName).To(Equal("My Example Client"))
 			})
 			It("should parse client_uri", func() {
-				Expect(client.Uri).To(Equal("https://client.example.org"))
+				Expect(request.ClientUri).To(Equal("https://client.example.org"))
 			})
 			It("should parse tos_uri", func() {
-				Expect(client.TermsOfServiceUri).To(Equal("https://client.example.org/tos"))
+				Expect(request.TermsOfServiceUri).To(Equal("https://client.example.org/tos"))
 			})
 			It("should parse policy_uri", func() {
-				Expect(client.PolicyUri).To(Equal("https://client.example.org/policy"))
+				Expect(request.PolicyUri).To(Equal("https://client.example.org/policy"))
 			})
 			It("should parse scope", func() {
-				Expect(client.Scopes).To(HaveLen(2))
-				Expect(client.Scopes[0]).To(Equal("a"))
-				Expect(client.Scopes[1]).To(Equal("b"))
+				Expect(request.Scopes).To(Equal("a b"))
 			})
 			It("should parse grant_types", func() {
-				Expect(client.GrantTypes).To(HaveLen(2))
-				Expect(client.GrantTypes[0]).To(Equal("implicit"))
-				Expect(client.GrantTypes[1]).To(Equal("password"))
+				Expect(request.GrantTypes).To(HaveLen(2))
+				Expect(request.GrantTypes[0]).To(Equal("implicit"))
+				Expect(request.GrantTypes[1]).To(Equal("password"))
 			})
 			It("should parse token_endpoint_auth_method", func() {
-				Expect(client.TokenEndPointAuthMethod).To(Equal(CLIENT_SECRET_BASIC))
+				Expect(request.TokenEndPointAuthMethod).To(Equal(string(CLIENT_SECRET_BASIC)))
 			})
 			It("should parse logo_uri", func() {
-				Expect(client.LogoUri).To(Equal("https://client.example.org/logo.png"))
+				Expect(request.LogoUri).To(Equal("https://client.example.org/logo.png"))
 			})
 			It("should parse jwks_uri", func() {
-				Expect(client.JwksUri).To(Equal("https://client.example.org/my_public_keys.jwks"))
+				Expect(request.JwksUri).To(Equal("https://client.example.org/my_public_keys.jwks"))
 			})
 			It("should parse software_id", func() {
-				Expect(client.SoftwareId).To(Equal("1"))
+				Expect(request.SoftwareId).To(Equal("1"))
 			})
 			It("should parse software_version", func() {
-				Expect(client.SoftwareVersion).To(Equal("1.0.0"))
+				Expect(request.SoftwareVersion).To(Equal("1.0.0"))
 			})
 			It("should parse software_statement", func() {
-				Expect(client.SoftwareStatementRawToken).To(Equal("eyJhbGciOiJSUzI1NiJ9.eyJzb2Z0d2FyZV9pZCI6IjROUkIxLTBYWkFCWkk5RTYtNVNNM1IiLCJjbGllbnRfbmFtZSI6IkV4YW1wbGUgU3RhdGVtZW50LWJhc2VkIENsaWVudCIsImNsaWVudF91cmkiOiJodHRwczovL2NsaWVudC5leGFtcGxlLm5ldC8ifQ.GHfL4QNIrQwL18BSRdE595T9jbzqa06R9BT8w409x9oIcKaZo_mt15riEXHazdISUvDIZhtiyNrSHQ8K4TvqWxH6uJgcmoodZdPwmWRIEYbQDLqPNxREtYn05X3AR7ia4FRjQ2ojZjk5fJqJdQ-JcfxyhK-P8BAWBd6I2LLA77IG32xtbhxYfHX7VhuU5ProJO8uvu3Ayv4XRhLZJY4yKfmyjiiKiPNe-Ia4SMy_d_QSWxskU5XIQl5Sa2YRPMbDRXttm2TfnZM1xx70DoYi8g6czz-CPGRi4SW_S2RKHIJfIjoI3zTJ0Y2oe0_EJAiXbL6OyF9S5tKxDXV8JIndSA"))
+				Expect(request.SoftwareStatement).To(Equal("eyJhbGciOiJSUzI1NiJ9.eyJzb2Z0d2FyZV9pZCI6IjROUkIxLTBYWkFCWkk5RTYtNVNNM1IiLCJjbGllbnRfbmFtZSI6IkV4YW1wbGUgU3RhdGVtZW50LWJhc2VkIENsaWVudCIsImNsaWVudF91cmkiOiJodHRwczovL2NsaWVudC5leGFtcGxlLm5ldC8ifQ.GHfL4QNIrQwL18BSRdE595T9jbzqa06R9BT8w409x9oIcKaZo_mt15riEXHazdISUvDIZhtiyNrSHQ8K4TvqWxH6uJgcmoodZdPwmWRIEYbQDLqPNxREtYn05X3AR7ia4FRjQ2ojZjk5fJqJdQ-JcfxyhK-P8BAWBd6I2LLA77IG32xtbhxYfHX7VhuU5ProJO8uvu3Ayv4XRhLZJY4yKfmyjiiKiPNe-Ia4SMy_d_QSWxskU5XIQl5Sa2YRPMbDRXttm2TfnZM1xx70DoYi8g6czz-CPGRi4SW_S2RKHIJfIjoI3zTJ0Y2oe0_EJAiXbL6OyF9S5tKxDXV8JIndSA"))
 			})
 //			It("should parse jwks", func() {
 //				str, _ := json.Marshal(client.Jwks[0])
