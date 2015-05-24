@@ -1,7 +1,7 @@
 # go-connect
 An Oauth2/ OpenId Connect Server
 
-[![Build Status](https://travis-ci.org/jhuntoo/go-connect.svg?branch=master)](https://travis-ci.org/jhuntoo/go-connect)
+[![Build Status](https://travis-ci.org/jhuntoo/go-connect.svg?branch=master)](https://travis-ci.org/jhuntoo/go-connect)[![Coverage Status](https://coveralls.io/repos/jhuntoo/go-connect/badge.svg)](https://coveralls.io/r/jhuntoo/go-connect)
 
 
 ##Specifications to Implement
