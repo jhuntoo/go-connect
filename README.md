@@ -9,6 +9,7 @@ An Oauth2/ OpenId Connect Server
 ### Oauth2
 1. [Core Spec (RFC6749)]( https://tools.ietf.org/html/rfc6749)
 2. [Dynamic Client Registration Spec (Draft)](https://tools.ietf.org/html/draft-ietf-oauth-dyn-reg-29) 
+3. [Dynamic Client Registration Management Protocol (Draft)](https://tools.ietf.org/html/draft-ietf-oauth-dyn-reg-management-15) 
 
 
 ### OpenId Connect
