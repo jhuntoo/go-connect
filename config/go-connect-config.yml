@@ -1,4 +1,14 @@
 auth2:
   registration:
     UnknownClientMetaDataBehaviour: "reject" # "use_defaults"
+	
+	AllowUpdate: true
+	AllowDelete: true
+	
+	RegistrationAccessTokenrotation
+	
+	
+  softwarestatement:
+    signingmethod : ""
+
 
